@@ -1,0 +1,19 @@
+.content-wrapper {
+  height: calc(100vh - 64px) !important;
+}
+
+.content-spacer {
+  padding: 25px !important;
+}
+
+.menu-spacer {
+  padding-left: 5px;
+}
+
+mat-sidenav {
+  min-width: 175px !important;
+}
+
+.coin {
+  margin-top: 18px;
+}

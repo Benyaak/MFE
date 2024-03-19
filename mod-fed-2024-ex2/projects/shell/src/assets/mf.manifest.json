@@ -1,0 +1,9 @@
+{
+  "mfe1": {
+  "remoteEntry": "http://localhost:3000/remoteEntry.js",
+  "exposedModule": "./Module",
+  "displayName": "Buy Crypto",
+  "routePath": "cryptos",
+  "ngModuleName": "CryptosModule"
+  }
+ }
