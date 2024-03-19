@@ -1,0 +1,101 @@
+{
+  "name": "mfe2",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "generators": {},
+  "sourceRoot": "mfe2/src",
+  "prefix": "mfe2",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "options": {
+        "outputPath": "dist/mfe2",
+        "index": "mfe2/src/index.html",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "mfe2/tsconfig.app.json",
+        "assets": [
+          "mfe2/src/favicon.ico",
+          "mfe2/src/assets"
+        ],
+        "styles": [
+          "mfe2/src/styles.css"
+        ],
+        "scripts": [],
+        "main": "mfe2/src/main.ts",
+        "customWebpackConfig": {
+          "path": "mfe2/webpack.config.js"
+        },
+        "commonChunk": false
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "mfe2/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "mfe2:build:production"
+        },
+        "development": {
+          "buildTarget": "mfe2:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 3001,
+        "publicHost": "http://localhost:3001"
+      }
+    },
+    "extract-i18n": {
+      "executor": "ngx-build-plus:extract-i18n",
+      "options": {
+        "buildTarget": "mfe2:build",
+        "extraWebpackConfig": "mfe2/webpack.config.js"
+      }
+    },
+    "test": {
+      "executor": "@angular-devkit/build-angular:karma",
+      "options": {
+        "polyfills": [
+          "zone.js",
+          "zone.js/testing"
+        ],
+        "tsConfig": "mfe2/tsconfig.spec.json",
+        "assets": [
+          "mfe2/src/favicon.ico",
+          "mfe2/src/assets"
+        ],
+        "styles": [
+          "mfe2/src/styles.css"
+        ],
+        "scripts": []
+      }
+    }
+  }
+}
